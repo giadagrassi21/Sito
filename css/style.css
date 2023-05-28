@@ -194,8 +194,8 @@ body{
   }
 }
 
-/*415px */
-@media screen and (max-width: 420px) {
+/*da 500px*/
+@media screen and (max-width: 500px) {
   main .smallh4 {
     font-size: 0.95rem !important;
   }
