@@ -197,6 +197,6 @@ body{
 /*415px */
 @media screen and (max-width: 415px) {
   main .smallh4 {
-    font-size: 0.95rem !important;
+    font-size: 0.9rem !important;
   }
 }
