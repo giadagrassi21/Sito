@@ -1,77 +1,80 @@
 <!DOCTYPE html>
 <html lang="ita">
-    <head>
-      <!-- meta -->
-      <meta charset="utf-8">
-      <meta name="viewport" content="width=device-width, initial-scale=1">
-      <meta name="description" content="Canzoneggiando è un sito divertente e coinvolgente che metterà alla prova la tua capacità di riconoscere le canzoni. Ascolta brevi frammenti musicali, indovina il titolo e sfida i tuoi amici per vedere chi riesce ad indovinare il maggior numero di canzoni.">
-      <meta name="robots" content="index, follow">
-      <!-- title -->        
-      <title>Canzoneggiando</title>
-      <!-- bootstrap CSS -->
-      <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
-      <!-- CSS -->
-      <link rel="stylesheet" type="text/css" href="css/style.css">
-      <!-- favicon -->
-      <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
-      <!-- font -->
-      <link href="https://fonts.googleapis.com/css?family=Shrikhand&display=swap" rel="stylesheet">
-      <link href="https://fonts.googleapis.com/css2?family=DM+Sans&display=swap" rel="stylesheet">
-      <!-- icone -->
-      <script src="https://kit.fontawesome.com/546a582962.js" crossorigin="anonymous"></script>
-      <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-      <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
-      <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
-      <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
-      <!-- Google analytics (gtag.js) -->
-      <script async src="https://www.googletagmanager.com/gtag/js?id=G-LZYLSBPCQF"></script>
-      <script>
-        window.dataLayer = window.dataLayer || [];
-        function gtag(){dataLayer.push(arguments);}
-        gtag('js', new Date());
-        gtag('config', 'G-LZYLSBPCQF');
-      </script>
+  <head>
+    <!-- meta -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Canzoneggiando è un sito divertente e coinvolgente che metterà alla prova la tua capacità di riconoscere le canzoni. Ascolta brevi frammenti musicali, indovina il titolo e sfida i tuoi amici per vedere chi riesce ad indovinare il maggior numero di canzoni.">
+    <meta name="robots" content="index, follow">
+    <!-- title -->        
+    <title>Canzoneggiando</title>
+    <!-- bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <!-- CSS -->
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+    <!-- favicon -->
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+    <!-- font -->
+    <link href="https://fonts.googleapis.com/css?family=Shrikhand&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans&display=swap" rel="stylesheet">
+    <!-- icone -->
+    <script src="https://kit.fontawesome.com/546a582962.js" crossorigin="anonymous"></script>
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <!-- Google analytics (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-LZYLSBPCQF"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-LZYLSBPCQF');
+    </script>      
     </head>
     <body class="container-fluid">
-        <header>
-            <section>
-              <a href="index.html">
-                <img src="img/logo_png.png" alt="Logo" class="logo">
-              </a>  
-                <h1>Rock</h1> 
-            </section>  
-            <nav>
-                <ul>
-                    <li><a class="active" href="index.html">HOME</a></li>
-                    <li><a href="about.html">ABOUT</a></li>
-                    <li><a href="documentazione.html">DOCUMENTAZIONE</a></li>
-                </ul>
-            </nav>
-        </header>
-        <main>                 
-            
-        </main>
-        <footer id="footer">
-          <div class="container">
-            <div class="row align-items-center">
-              <div class="col">
-                <p>© 2023 Canzoneggiando by Giada Grassi</p>
-              </div>
-              <div class="col">
-                <p>Seguici sui nostri social!</p>
-                <div class="row align-items-center">
-                  <div class="col">
-                    <a target="_blank" href="https://instagram.com/canzoneggiando_?igshid=NTc4MTIwNjQ2YQ==">
-                      <i class="fa-brands fa-instagram fa-xl" style="color: #ffde59;"></i>
-                    </a>
-                    <a target="_blank" href="https://www.facebook.com/profile.php?id=100092308609068">
-                      <i class="fa-brands fa-square-facebook fa-xl" style="color: #ffde59;"></i>
-                    </a>
-                  </div>
+      <header>
+        <section>
+          <a href="index.html">
+            <img src="img/logo_png.png" alt="Logo" class="logo">
+          </a>  
+      <h1>Canzoneggiando</h1> 
+        </section>
+          <nav>
+            <ul>
+              <li><a class="active" href="index.html">HOME</a></li>
+              <li><a href="about.html">ABOUT</a></li>
+              <li><a href="documentazione.html">DOCUMENTAZIONE</a></li>
+            </ul>
+          </nav>
+      </header>
+      <main>                 
+        <div class="form-floating mb-3">
+          <input class="form-control" id="floatingInput" placeholder="Conosci la canzone? Scrivi qui il nome!">
+          <label for="floatingInput"></label>
+        </div>
+      </main>
+      <footer id="footer">
+        <div class="container">
+          <div class="row align-items-center">
+            <div class="col">
+              <p>© 2023 Canzoneggiando by Giada Grassi</p>
+            </div>
+            <div class="col">
+              <p>Seguici sui nostri social!</p>
+              <div class="row align-items-center">
+                <div class="col">
+                  <a target="_blank" href="https://instagram.com/canzoneggiando_?igshid=NTc4MTIwNjQ2YQ==">
+                    <i class="fa-brands fa-instagram fa-xl" style="color: #ffde59;"></i>
+                  </a>
+                  <a target="_blank" href="https://www.facebook.com/profile.php?id=100092308609068">
+                    <i class="fa-brands fa-square-facebook fa-xl" style="color: #ffde59;"></i>
+                  </a>
                 </div>
               </div>
             </div>
           </div>
-        </footer>
+        </div>
+      </footer>
     </body>
 </html>

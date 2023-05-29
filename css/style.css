@@ -139,9 +139,14 @@ body{
   /*pmp card*/
 
   #margin{
-    margin: 2em 15em;
+    margin: 5%;
   }
   
+  .card-body img {
+    max-width: 100%;
+    height: auto;
+  }
+
   /*footer*/
 
   #footer{
