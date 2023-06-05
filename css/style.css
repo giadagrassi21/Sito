@@ -1,6 +1,6 @@
 a{
   text-decoration: none;
-  color:#5271ff;
+  color:#ffde59;
 }
 
 a:hover{
@@ -76,7 +76,7 @@ body{
     }
 
     nav ul li a:hover{
-      color:#ffde59;
+      color:#5271ff;
       font-weight: 400 !important;
     }
 
@@ -106,15 +106,44 @@ body{
     color:white;
   }
 
+  footer p a:hover{
+    color:#5271ff;
+    font-size: 18px;
+    transition-duration: 0.15s;
+  }
+
 /*CLASSI E ID*/
 
 .bold{
   font-weight: 700;
+  color: #5271ff;
 }
 
 .active{
   color:#5271ff;
 } 
+
+.bottoni{
+  background-color:#ffde59;
+  color:#5271ff;
+  border-color:#5271ff;
+  cursor: pointer;
+}
+
+.bottoni:hover{
+  background-color:#5271ff;
+  color:#ffde59;
+  font-weight: 400;
+  transition: 0.5s;
+}
+
+textarea{
+  margin-bottom: 15px;
+}
+
+.form-control{
+  background-color:#f2f3ff;
+}
 
   /*header*/
 
@@ -131,44 +160,55 @@ body{
     margin-top: 15px;
   }
   
+  .briciole_di_pane a{
+    color:#5271ff;
+  }
+
+  /*come giocare*/
+
+  #come_giocare-margin{
+    margin: 2% 25%;
+  }
+
   /*generi main*/
 
 
-  /*main card*/
+  /*about*/
 
-  #main-margin{
+  #about-margin{
+    margin: 2% 18%;
+  }
+
+  /*index e doc card*/
+
+  #card-margin{
     margin: 12.5%;
   }
 
   .card{
     background-color:#f2f3ff;
     border-color:#5271ff;
-    margin-bottom: 1rem;
+    margin-bottom: 2%;
   }
 
-  .bottoni{
-    background-color:#ffde59;
-    color:#5271ff;
-    border-color:#5271ff;
-    cursor: pointer;
-  }
+  /*docs (pmp e cs)*/
 
-  .bottoni:hover{
-    background-color:#5271ff;
-    color:#ffde59;
-    transition: 0.5s;
-  }
+    /*pmp*/
 
-  /*pmp card*/
+    #pmp-margin{
+      margin: 2% 12%;
+    }
 
-  #pmp-margin{
-    margin: 2% 12%;
-  }
+    .card-body img{
+      max-width: 100%;
+      height: auto;
+    }
 
-  .card-body img{
-    max-width: 100%;
-    height: auto;
-  }
+    /*cs*/
+
+    #cs-margin{
+      margin: 2% 12%;
+    }
 
 /* RESPONSIVNESS*/
 
