@@ -55,14 +55,14 @@
       <main id="come_giocare-margin">
         <div>
           <h3>Come funziona?</h3>
-          <p>Semplicissimo!<br>
-            Dovrete cliccare sul play, ascoltare un breve frammento di una canzone e cercare di indovinare il titolo. <span class="bold">Se non riuscite a farlo subito</span>, potrete scegliere se ricevere un aiuto e <span class="bold">avere un'informazione utile per indovinarla</span> oppure se <span class="bold"> ascoltare un altro pezzo della canzone</span>.
+          <p>È semplicissimo!<br>
+            Nell’homepage sceglierete che genere di canzone indovinare <span class="bold">in base al vostro mood o al tipo canzoni che di solito ascoltate</span>. In seguito, basterà cliccare sul pulsante di riproduzione e ascoltare un breve frammento di una canzone della durata di circa 18 secondi. Il vostro obiettivo sarà indovinare il titolo della canzone. Se non ci riuscirete immediatamente, potrete o richiedere un indizio e <span class="bold">ottenere un'informazione utile</span> o <span class="bold">ascoltare un altro frammento della canzone</span>. Avrete a disposizione <span class="bold">1 indizio</span> e <span class="bold"> 10 tentativi</span> a canzone. Se non riuscirete a farlo entro questi tentativi, non siate tristi! Avrete comunque scoperto una nuova canzone.
           </p>
         </div>
         <div class="form-floating">
           <h3>Commenti</h3>
             <textarea class="form-control" placeholder="Se hai dubbi o curiosità, lascia qui un commento!" id="floatingTextarea2" style="height: 100px"></textarea>
-            <button type="submit" class="btn btn-primary bottoni">Invia</button>
+            <button type="button" class="btn btn-primary bottoni" onclick="inviaCommento()">Invia</button>
           <p>Siamo sicuri che il gioco vi coinvolgerà e che amerete sfidare i vostri amici per vedere chi riesce ad indovinare il maggior numero di canzoni!</p>
             <a href="index.html">
               <button type="button" class="btn btn-primary btn-lg bottoni">Scegli il genere con cui iniziare a giocare</button>
@@ -92,5 +92,16 @@
           © 2023 Canzoneggiando by Giada Grassi
         </div>
       </footer>
+
+      <script>
+        function inviaCommento() {
+          var commento = document.getElementById("floatingTextarea2").value;
+          // Invia il contenuto del commento a un server o gestiscilo come desideri
+          // ...
+          // Resetta il campo di testo
+          document.getElementById("floatingTextarea2").value = "";
+        }
+      </script>
+
     </body>
 </html>
