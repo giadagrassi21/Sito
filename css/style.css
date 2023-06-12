@@ -104,6 +104,11 @@ body{
   color: #5271ff;
 }
 
+.underlined{
+  border-bottom:#ffde59;
+  transition: 0.5s;
+}
+
 .active{
   color:#5271ff !important;
 } 
