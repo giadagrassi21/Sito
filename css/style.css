@@ -6,8 +6,9 @@ a{
 a:hover{
   text-decoration: none;
   font-weight: 700;
-  transition: 0.5s;
+  font-size: larger;
   color:#5271ff;
+  transition: 0.5s;
 }
 
 h2, h3, h5{
@@ -18,8 +19,22 @@ h4{
   color:#92a6ff
 }
 
+h6{
+  color: #5271ff;
+}
+
+h6:hover{
+  font-weight: 700;
+  font-size: 20px;
+  transition: 0.5s;
+}
+
 p{
   margin-top: 15px !important;
+}
+
+textarea{
+  margin: 10px;
 }
 
 /*body*/
@@ -136,13 +151,14 @@ body{
   font-weight: 400;
   transition: 0.5s;
 }
-
-textarea{
-  margin-bottom: 15px;
+.mb-3, .my-3{
+  margin: 0 !important;
 }
 
-.form-control{
-  background-color:#f2f3ff;
+.immagine_ridotta{
+  width: 45%; 
+  max-width: 300px;
+  height: auto;
 }
 
   /*header*/
@@ -157,7 +173,7 @@ textarea{
   /*briciole di pane*/
 
   .briciole_di_pane{
-    margin-top: 15px;
+    margin: 15px;
   }
   
   .briciole_di_pane a{
@@ -172,6 +188,73 @@ textarea{
 
   /*generi main*/
 
+  #generi-margin{
+    margin: 5%;
+  }
+
+  #generi-main{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    padding: 15px;
+  }
+
+  .music-player{
+    background-color:#E3E5FA;
+    width: 400px;
+    margin: 15px 25px;
+    padding: 15px;
+  }
+
+  #progress{
+    -webkit-appearance: none;
+    width: 100%;
+    height: 6px;
+    background-color:#92a6ff;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 4px;
+    cursor: pointer;
+    margin: 20px 0;
+  }
+
+  #progress::-webkit-slider-thumb{
+    -webkit-appearance: none;
+    background-color:#ffde59;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+  }
+
+  .controls div{
+    width: 45px;
+    height: 45px;
+    margin: 20px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+  }
+
+  .play-circle {
+    background-color: #92a6ff;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .controls div:nth-child(2){
+    transform: scale(1.5);
+  }
+
+  /*playlist*/
+
+  #playlist-margin{
+    margin: 5%;
+  }
 
   /*about*/
 
@@ -188,7 +271,7 @@ textarea{
   .card{
     background-color:#f2f3ff;
     border-color:#5271ff;
-    margin-bottom: 2%;
+    margin: 1.5%;
   }
 
   /*docs (pmp e cs)*/

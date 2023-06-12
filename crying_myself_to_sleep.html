@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="it">
+  <head>
+    <!-- meta -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Canzoneggiando è un sito divertente e coinvolgente che metterà alla prova la tua capacità di riconoscere le canzoni. Ascolta brevi frammenti musicali, indovina il titolo e sfida i tuoi amici per vedere chi riesce ad indovinare il maggior numero di canzoni.">
+    <meta name="robots" content="index, follow">
+    <!-- title -->        
+    <title>Canzoneggiando</title>
+    <!-- bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <!-- CSS -->
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+    <!-- favicon -->
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+    <!-- font -->
+    <link href="https://fonts.googleapis.com/css?family=Shrikhand&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans&display=swap" rel="stylesheet">
+    <!-- icone -->
+    <script src="https://kit.fontawesome.com/546a582962.js" crossorigin="anonymous"></script>
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <!-- Google analytics (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-LZYLSBPCQF"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-LZYLSBPCQF');
+    </script>      
+    </head>
+    <body class="container-fluid">
+      <header>
+        <section>
+          <a href="index.html">
+            <img src="img/logo_png.png" alt="Logo" class="logo">
+          </a>  
+      <h1>Canzoneggiando</h1> 
+        </section>
+          <nav>
+            <ul>
+              <li><a class="active" href="index.html">HOME</a></li>
+              <li><a href="come_giocare.html">COME GIOCARE</a></li>
+              <li><a href="about.html">ABOUT</a></li>
+              <li><a href="documentazione.html">DOCUMENTAZIONE</a></li>
+            </ul>
+          </nav>
+      </header>
+      <section class="briciole_di_pane">
+        <a href="index.html">Home</a> / <a href="#">Crying myself to sleep</a>
+      </section> 
+      <main id="generi-margin">
+        <div class="container" id="generi-main">
+          <div class="music-player">
+            <audio id="song">
+              <source src="media/night_run_away-an_jone.mp3" type="audio/mpeg">
+            </audio>
+            <input type="range" value="0" id="progress">
+            <div class="controls">
+              <div class="play-circle">
+                <div onclick="playPause()"><i class="fa-solid fa-play" style="color: #ffde59;" id="ctrlIcon"></i></div>
+              </div>
+            </div>
+            <div class="form-floating mb-3">
+              <input class="form-control" id="floatingInput" placeholder="Conosci la canzone? Scrivi qui il nome!">
+              <label for="floatingInput"></label>
+            </div>
+            <div class="container text-center">
+              <div class="row align-items-center">
+                <div class="col">
+                  <button type="submit" class="btn btn-primary bottoni" onclick="conferma()">Conferma</button>
+                </div>
+                <div class="col">
+                  <button type="submit" class="btn btn-primary bottoni" onclick="indizio()">Indizio</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <a href="playlist_triste.html">
+          <h6>Se questo genere di canzoni ti interessano, clicca qui per accedere alla playlist dedicata!</h6>
+        </a>      
+      </main>
+      <footer>
+        <div class="container text-center">
+          <div class="row align-items-center">
+            <div class="col">
+              <p><a href="index.html">Home</a></p>
+              <p><a href="come_giocare.html">Come giocare</a></p>
+              <p><a href="about.html">About</a></p>
+              <p><a href="documentazione.html">Documentazione</a></p>
+            </div>
+            <div class="col">
+              <a target="_blank" href="https://instagram.com/canzoneggiando_?igshid=NTc4MTIwNjQ2YQ==">
+                <i class="fa-brands fa-instagram fa-xl" style="color: #ffde59;"></i>
+              </a>
+              <a target="_blank" href="https://www.facebook.com/profile.php?id=100092308609068">
+                <i class="fa-brands fa-square-facebook fa-xl" style="color: #ffde59;"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+        <div>
+          © 2023 Canzoneggiando by Giada Grassi
+        </div>
+      </footer>
+
+      <script>
+        // Ottenere riferimenti agli elementi del documento HTML
+        let progress = document.getElementById("progress");
+        let song = document.getElementById("song");
+        let ctrlIcon = document.getElementById("ctrlIcon");
+      
+        // Variabile per tenere traccia dei tentativi dell'utente
+        let attempts = 0;
+      
+        // Titolo della canzone da indovinare
+        const songTitle = "Nobody";
+      
+        // Funzione chiamata quando i metadati del file audio sono stati caricati
+        song.onloadedmetadata = function() {
+          // Impostare il valore massimo e il valore corrente della barra di avanzamento in base alla durata del brano
+          progress.max = song.duration;
+          progress.value = song.currentTime;
+        };
+      
+        // Funzione per riprodurre o mettere in pausa il brano quando viene premuto il pulsante di riproduzione/pausa
+        function playPause() {
+          if (ctrlIcon.classList.contains("fa-pause")) {
+            // Se il brano è in pausa, metti in pausa e cambia l'icona del pulsante
+            song.pause();
+            ctrlIcon.classList.remove("fa-pause");
+            ctrlIcon.classList.add("fa-play");
+          } else {
+            // Se il brano è in riproduzione, metti in pausa dopo 5 secondi
+            song.play();
+            ctrlIcon.classList.add("fa-pause");
+            ctrlIcon.classList.remove("fa-play");
+      
+            setTimeout(function() {
+              song.pause();
+              ctrlIcon.classList.remove("fa-pause");
+              ctrlIcon.classList.add("fa-play");
+              checkAttempts();
+            }, 5000);
+          }
+        }
+      
+        // Aggiorna il valore della barra di avanzamento del brano in base al tempo corrente di riproduzione
+        song.addEventListener('timeupdate', function() {
+          progress.value = song.currentTime;
+        });
+      
+        // Funzione chiamata quando l'utente conferma il titolo della canzone
+        function conferma() {
+          const input = document.getElementById("floatingInput");
+          const userInput = input.value.trim().toLowerCase();
+          if (userInput === songTitle.toLowerCase()) {
+            // Se l'utente ha indovinato il titolo della canzone, mostra il messaggio di successo
+            showResult("Hai indovinato la canzone!");
+          } else {
+            // Altrimenti, incrementa il numero di tentativi dell'utente
+            attempts++;
+            input.value = ""; // Svuota l'input dopo ogni tentativo
+            input.focus(); // Riporta il focus all'input per il tentativo successivo
+          }
+        }
+      
+        // Funzione per visualizzare un suggerimento sul titolo della canzone
+        function indizio() {
+          // Creazione del popup utilizzando la libreria Bootstrap
+          const hintPopup = `
+            <div class="modal fade" id="hintModal" tabindex="-1" role="dialog" aria-labelledby="hintModalLabel" aria-hidden="true">
+              <div class="modal-dialog modal-dialog-centered" role="document">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h5 class="modal-title" id="hintModalLabel">Suggerimento</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                      <span aria-hidden="true">&times;</span>
+                    </button>
+                  </div>
+                  <div class="modal-body">
+                    È una canzone di Mitski.
+                  </div>
+                </div>
+              </div>
+            </div>
+          `;
+      
+          // Aggiunta del popup al documento HTML
+          document.body.insertAdjacentHTML('beforeend', hintPopup);
+      
+          // Apertura del popup utilizzando la libreria Bootstrap
+          $('#hintModal').modal('show');
+        }
+      
+        // Funzione per controllare i tentativi dell'utente e mostrare il messaggio di risultato appropriato
+        function checkAttempts() {
+          if (attempts === 0 && song.currentTime >= song.duration) {
+            // L'utente ha ascoltato l'intera canzone senza indovinare il titolo
+            showResult("Hai perso. Il titolo della canzone era: " + songTitle);
+          }
+        }
+      
+        // Funzione per mostrare il messaggio di risultato al termine del gioco
+        function showResult(message) {
+          const resultDiv = document.createElement("div");
+          resultDiv.classList.add("container", "text-center");
+          const resultText = document.createElement("h3");
+          resultText.innerText = message;
+          resultDiv.appendChild(resultText);
+          const main = document.getElementById("generi-main");
+          main.replaceChild(resultDiv, document.getElementById("music-player"));
+        }
+      
+        // Intervallo per aggiornare continuamente il valore della barra di avanzamento in base al tempo corrente di riproduzione del brano
+        setInterval(() => {
+          progress.value = song.currentTime;
+        }, 500);
+      </script>
+      
+      
+    </body>
+</html>
