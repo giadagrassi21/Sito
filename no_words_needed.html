@@ -59,13 +59,14 @@
               <source src="media/night_run_away-an_jone.mp3" type="audio/mpeg">
             </audio>
             <input type="range" value="0" id="progress">
+            <div class="line-marker"></div>
             <div class="controls">
               <div class="play-circle">
                 <div onclick="playPause()"><i class="fa-solid fa-play" style="color: #ffde59;" id="ctrlIcon"></i></div>
               </div>
             </div>
             <div class="form-floating mb-3">
-              <input class="form-control" id="floatingInput" placeholder="Conosci la canzone? Scrivi qui il nome!">
+              <input class="form-control" id="floatingInput" placeholder="Scrivi qui il nome della canzone!">
               <label for="floatingInput"></label>
             </div>
             <div class="container text-center">
@@ -80,7 +81,7 @@
             </div>
           </div>
         </div>
-        <a href="playlist_strumentale.html">
+        <a href="playlist_triste.html">
           <h6>Se questo genere di canzoni ti interessano, clicca qui per accedere alla playlist dedicata!</h6>
         </a>      
       </main>
@@ -113,14 +114,13 @@
         let progress = document.getElementById("progress");
         let song = document.getElementById("song");
         let ctrlIcon = document.getElementById("ctrlIcon");
-      
-        // Variabile per tenere traccia dei tentativi dell'utente
-        let attempts = 0;
+        let wrongAttempts = 0; // Numero di tentativi errati dell'utente
+        const maxAttempts = 10; // Numero massimo di tentativi consentiti
       
         // Titolo della canzone da indovinare
-        const songTitle = "Nobody";
+        const songTitle = "Experience";
       
-        // Funzione chiamata quando i metadati del file audio sono stati caricati
+        // Funzione che si attiva quando i metadati del file audio sono stati caricati
         song.onloadedmetadata = function() {
           // Impostare il valore massimo e il valore corrente della barra di avanzamento in base alla durata del brano
           progress.max = song.duration;
@@ -135,7 +135,7 @@
             ctrlIcon.classList.remove("fa-pause");
             ctrlIcon.classList.add("fa-play");
           } else {
-            // Se il brano è in riproduzione, metti in pausa dopo 5 secondi
+            // Se il brano è in riproduzione, metti in pausa dopo 17.9 secondi
             song.play();
             ctrlIcon.classList.add("fa-pause");
             ctrlIcon.classList.remove("fa-play");
@@ -145,31 +145,67 @@
               ctrlIcon.classList.remove("fa-pause");
               ctrlIcon.classList.add("fa-play");
               checkAttempts();
-            }, 5000);
+            }, 17900);
           }
         }
       
         // Aggiorna il valore della barra di avanzamento del brano in base al tempo corrente di riproduzione
-        song.addEventListener('timeupdate', function() {
+        song.addEventListener("timeupdate", function() {
           progress.value = song.currentTime;
         });
       
-        // Funzione chiamata quando l'utente conferma il titolo della canzone
+        // Funzione per gestire l'evento di CONFERMA
         function conferma() {
+          // Ottenere il valore dell'input del titolo della canzone
           const input = document.getElementById("floatingInput");
-          const userInput = input.value.trim().toLowerCase();
-          if (userInput === songTitle.toLowerCase()) {
-            // Se l'utente ha indovinato il titolo della canzone, mostra il messaggio di successo
-            showResult("Hai indovinato la canzone!");
+          const userTitle = input.value;
+          // Confrontare il titolo inserito dall'utente con il titolo corretto
+          if (userTitle.toLowerCase() === songTitle.toLowerCase()) {
+            // Mostrare un popup di successo se il titolo è corretto
+            showPopup("Hai indovinato la canzone!", true);
           } else {
-            // Altrimenti, incrementa il numero di tentativi dell'utente
-            attempts++;
-            input.value = ""; // Svuota l'input dopo ogni tentativo
-            input.focus(); // Riporta il focus all'input per il tentativo successivo
+            // Mostrare un popup di errore se il titolo è errato
+            wrongAttempts++;
+            if (wrongAttempts === maxAttempts) {
+              showPopup("Hai terminato i tentativi a disposizione.", true);
+            } else {
+              showPopup("Ritenta, non hai indovinato la canzone.", false);
+            }
           }
         }
+        // Funzione per mostrare il popup
+        function showPopup(message, showIframe) {
+          // Rimuovere eventuali popup precedenti
+          const previousPopup = document.getElementById("resultModal");
+          if (previousPopup) {
+            previousPopup.remove();
+          }
+          // Creazione del popup utilizzando la libreria Bootstrap
+          const popup = `
+            <div class="modal fade" id="resultModal" tabindex="-1" role="dialog" aria-labelledby="resultModalLabel" aria-hidden="true">
+              <div class="modal-dialog modal-dialog-centered" role="document">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h5 class="modal-title" id="resultModalLabel">Risultato</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                      <span aria-hidden="true">&times;</span>
+                    </button>
+                  </div>
+                  <div class="modal-body">
+                    ${message}
+                  </div>
+                  ${showIframe ? '<div class="modal-body">' + '<iframe style="border-radius:12px" src="https://open.spotify.com/embed/track/1BncfTJAWxrsxyT9culBrj?utm_source=generator&theme=0" width="100%" height="152" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>' + '</div>' : ''}
+                </div>
+              </div>
+            </div>
+          `;
+          // Aggiunta del popup al documento HTML
+          document.body.insertAdjacentHTML("beforeend", popup);
+          // Apertura del popup utilizzando la libreria Bootstrap
+          $("#resultModal").modal("show");
+        }
       
-        // Funzione per visualizzare un suggerimento sul titolo della canzone
+        // Funzione per visualizzare un INDIZIO sul titolo della canzone
         function indizio() {
           // Creazione del popup utilizzando la libreria Bootstrap
           const hintPopup = `
@@ -189,38 +225,17 @@
               </div>
             </div>
           `;
-      
           // Aggiunta del popup al documento HTML
-          document.body.insertAdjacentHTML('beforeend', hintPopup);
-      
+          document.body.insertAdjacentHTML("beforeend", hintPopup);
           // Apertura del popup utilizzando la libreria Bootstrap
-          $('#hintModal').modal('show');
-        }
-      
-        // Funzione per controllare i tentativi dell'utente e mostrare il messaggio di risultato appropriato
-        function checkAttempts() {
-          if (attempts === 0 && song.currentTime >= song.duration) {
-            // L'utente ha ascoltato l'intera canzone senza indovinare il titolo
-            showResult("Hai perso. Il titolo della canzone era: " + songTitle);
-          }
-        }
-      
-        // Funzione per mostrare il messaggio di risultato al termine del gioco
-        function showResult(message) {
-          const resultDiv = document.createElement("div");
-          resultDiv.classList.add("container", "text-center");
-          const resultText = document.createElement("h3");
-          resultText.innerText = message;
-          resultDiv.appendChild(resultText);
-          const main = document.getElementById("generi-main");
-          main.replaceChild(resultDiv, document.getElementById("music-player"));
+          $("#hintModal").modal("show");
         }
       
         // Intervallo per aggiornare continuamente il valore della barra di avanzamento in base al tempo corrente di riproduzione del brano
         setInterval(() => {
           progress.value = song.currentTime;
         }, 500);
-      </script>
-      
+      </script>            
+               
     </body>
 </html>
