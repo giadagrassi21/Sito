@@ -70,6 +70,10 @@ body{
       font-weight: 700;
     }
 
+   ul{
+      padding: 0;
+    }
+
     nav ul li {
       margin: 0 10px;
       padding: 10px 10px 0px 10px;
