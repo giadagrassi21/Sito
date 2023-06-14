@@ -70,7 +70,7 @@ body{
       font-weight: 700;
     }
 
-   ul{
+   nav ul{
       padding: 0;
     }
 
@@ -178,7 +178,7 @@ body{
   /*generi main*/
 
   #generi-margin{
-    margin: 2%;
+    margin: 5% 2%;
   }
 
   #generi-main{
